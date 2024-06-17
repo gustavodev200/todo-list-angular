@@ -1,0 +1,8 @@
+<div class="task-item">
+  <span [ngSwitch]="priority">
+    <span *ngSwitchCase="1" class="circle high"></span>
+    <span *ngSwitchCase="2" class="circle medium"></span>
+    <span *ngSwitchCase="3" class="circle low"></span>
+    <span *ngSwitchDefault class="circle default"></span>
+  </span>
+</div>

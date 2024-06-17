@@ -1,0 +1,9 @@
+.form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.completed-task {
+  text-decoration: line-through;
+}

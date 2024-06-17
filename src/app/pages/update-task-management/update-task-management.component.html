@@ -1,0 +1,26 @@
+<section>
+  <h1>Update Task</h1>
+  <form
+    class="form"
+    [formGroup]="form"
+    (ngSubmit)="updateTask(form.value, taskId)"
+  >
+    <mat-form-field appearance="outline">
+      <mat-label>Update task</mat-label>
+      <input matInput formControlName="task" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Task priority</mat-label>
+      <select matNativeControl formControlName="task_priority">
+        <option value="1">High</option>
+        <option value="2">Average</option>
+        <option value="3">Low</option>
+      </select>
+    </mat-form-field>
+    <div class="example-button-container">
+      <button mat-fab>
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+  </form>
+</section>

@@ -1,0 +1,54 @@
+<section>
+  <h1>Task Management</h1>
+  <form class="form" [formGroup]="form" (ngSubmit)="createTask()">
+    <mat-form-field appearance="outline">
+      <mat-label>Enter a task</mat-label>
+      <input
+        matInput
+        placeholder="Study Angular 17"
+        formControlName="task"
+        required
+      />
+      <mat-error *ngIf="form.get('task')?.invalid && form.get('task')?.touched">
+        Task is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Task priority</mat-label>
+      <select matNativeControl formControlName="task_priority" required>
+        <option [value]="1">High</option>
+        <option [value]="2">Average</option>
+        <option [value]="3">Low</option>
+      </select>
+    </mat-form-field>
+    <div class="example-button-container">
+      <button mat-fab [disabled]="!form.valid">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </form>
+  <app-task-item *ngFor="let task of tasks">
+    <mat-checkbox
+      checkbox
+      [checked]="task.completed"
+      (change)="updateTaskCompleted(task)"
+    ></mat-checkbox>
+    <ng-container priority>
+      <app-priority-status
+        [priority]="task.task_priority"
+      ></app-priority-status>
+    </ng-container>
+
+    <span task [ngClass]="{ 'completed-task': task.completed }"
+      >{{ task.task }}
+    </span>
+
+    <button edit mat-fab (click)="navigateToEdit(task.id)">
+      <mat-icon>edit</mat-icon>
+    </button>
+
+    <!-- <button delete mat-fab (click)="deleteTask(task)">
+      <mat-icon>delete</mat-icon>
+    </button> -->
+  </app-task-item>
+</section>
